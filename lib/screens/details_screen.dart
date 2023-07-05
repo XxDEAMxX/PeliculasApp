@@ -8,25 +8,24 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //TODO: cambiar luego por una instancia de movie
     final String movie = ModalRoute.of(context)?.settings.arguments.toString() ?? 'no moview';
 
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          _CustomAppBar(),
+          const _CustomAppBar(),
           SliverList(
             delegate: SliverChildListDelegate([
-              _PosterAndTitle(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             _Overview(),
-             CastingCards()
+             const  _PosterAndTitle(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const _Overview(),
+             const CastingCards()
             ])
           ),
           
@@ -52,11 +51,11 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
           width: double.infinity,
           alignment: Alignment.bottomCenter,
-          padding: EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 10),
           color: Colors.black12,
           child: const Text('Movie.Title', style: TextStyle( fontSize: 16 ),),
         ),
-        background: FadeInImage(
+        background: const FadeInImage(
           placeholder: AssetImage('assets/loading.gif'), 
           image: NetworkImage('https://via.placeholder.com/500x300'),
           fit: BoxFit.cover,
@@ -83,7 +82,7 @@ class _PosterAndTitle extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: FadeInImage(
+            child: const FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
               image: NetworkImage('https://via.placeholder.com/200x300'),
               height: 150 ,
@@ -99,8 +98,8 @@ class _PosterAndTitle extends StatelessWidget {
 
               Row(
                 children: [
-                  Icon(Icons.star_border, size: 15, color: Colors.grey,),
-                  SizedBox(width: 5,),
+                  const Icon(Icons.star_border, size: 15, color: Colors.grey,),
+                  const SizedBox(width: 5,),
                   Text('movie.voteAvarage', style: textTheme.caption,)
                 ],
 
@@ -121,7 +120,7 @@ class _Overview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Text(
         'Sit incididunt et culpa ut. Mollit do enim cupidatat labore dolore incididunt. Elit anim esse fugiat sit qui. Duis veniam aliqua officia esse fugiat amet aliqua cillum dolore consectetur tempor veniam.',
         textAlign: TextAlign.justify,
