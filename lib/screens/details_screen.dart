@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
    
@@ -17,6 +18,15 @@ class DetailsScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               _PosterAndTitle(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             _Overview(),
+             CastingCards()
             ])
           ),
           
@@ -42,6 +52,7 @@ class _CustomAppBar extends StatelessWidget {
         title: Container(
           width: double.infinity,
           alignment: Alignment.bottomCenter,
+          padding: EdgeInsets.only(bottom: 10),
           color: Colors.black12,
           child: const Text('Movie.Title', style: TextStyle( fontSize: 16 ),),
         ),
@@ -84,7 +95,7 @@ class _PosterAndTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('movie.title', style: textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2,),
-              Text('movie.originalTitle', style: textTheme.subtitle1, overflow: TextOverflow.ellipsis, maxLines: 2,),
+              Text('movie.originalTitle', style: Theme.of(context).textTheme.subtitle1, overflow: TextOverflow.ellipsis, maxLines: 2,),
 
               Row(
                 children: [
@@ -92,11 +103,29 @@ class _PosterAndTitle extends StatelessWidget {
                   SizedBox(width: 5,),
                   Text('movie.voteAvarage', style: textTheme.caption,)
                 ],
+
               )
             ],
           )
 
         ]
+      ),
+    );
+  }
+}
+
+
+class _Overview extends StatelessWidget {
+  const _Overview({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Text(
+        'Sit incididunt et culpa ut. Mollit do enim cupidatat labore dolore incididunt. Elit anim esse fugiat sit qui. Duis veniam aliqua officia esse fugiat amet aliqua cillum dolore consectetur tempor veniam.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle2,
       ),
     );
   }
