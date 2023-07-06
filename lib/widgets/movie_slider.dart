@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/screens/details_screen.dart';
 
 class MovieSlider extends StatelessWidget {
   const MovieSlider({super.key});
