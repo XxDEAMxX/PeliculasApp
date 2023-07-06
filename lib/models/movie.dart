@@ -14,6 +14,17 @@ class Movie {
     double voteAverage;
     int voteCount;
 
+
+    get fullPosterImg{
+
+      if(this.posterPath!=null){
+        return 'https://image.tmdb.org/t/p/w500${ this.posterPath }';
+      }
+      return 'https://i.stack.imgur.com/GNhxO.png';
+
+      
+    }
+
     Movie({
         required this.adult,
         this.backdropPath,
