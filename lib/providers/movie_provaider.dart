@@ -37,7 +37,6 @@ class MovieProvaider extends ChangeNotifier{
 
     final jsonData = await _getJsonData('3/movie/now_playing');
 
-  
     final nowPlayingResponse = NowPlayingResponse.fromJson(jsonData);
      
     onDisplayMovie = nowPlayingResponse.results;
@@ -61,6 +60,9 @@ class MovieProvaider extends ChangeNotifier{
   }
 
   Future <List<Cast>> getMovieCast(int movieId) async{
+
+    if(moviesCast.containsKey(movieId)) return moviesCast[movieId]!;
+
     print('pidiendo info de los servidores');
     final jsonData = await _getJsonData('3/movie/$movieId/credits', _popularPage);
     final creditsReponse = CreditsReponse.fromJson(jsonData);
