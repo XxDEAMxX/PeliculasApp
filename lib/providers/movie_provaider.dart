@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:peliculas/models/models.dart';
+import 'package:peliculas/models/search_response.dart';
 
 class MovieProvaider extends ChangeNotifier{
 
@@ -23,7 +24,7 @@ class MovieProvaider extends ChangeNotifier{
 
   Future<String> _getJsonData (String endPoint, [int page = 1]) async{
 
-      var url = Uri.https(_baseUrl, endPoint, {
+      final url = Uri.https(_baseUrl, endPoint, {
       'api_key': _apyKey,
       'language': _lenguage,
       'page': '$page'
@@ -68,6 +69,19 @@ class MovieProvaider extends ChangeNotifier{
     final creditsReponse = CreditsReponse.fromJson(jsonData);
     moviesCast[movieId] = creditsReponse.cast;
     return creditsReponse.cast;
+  }
+
+  Future<List<Movie>> searchMovie(String query) async{
+    final url = Uri.https(_baseUrl, '3/search/movie', {
+      'api_key': _apyKey,
+      'language': _lenguage,
+      'query': query
+    });
+
+    final response = await http.get(url);
+    final searchReponse = SearchReponse.fromJson(response.body) ;   
+
+    return searchReponse.results;
   }
 
 }
