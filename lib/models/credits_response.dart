@@ -19,7 +19,9 @@ class CreditsReponse {
         required this.crew,
     });
 
-    factory CreditsReponse.fromJson(Map<String, dynamic> json) => CreditsReponse(
+    factory CreditsReponse.fromJson(String str) => CreditsReponse.fromMap(json.decode(str));
+
+    factory CreditsReponse.fromMap(Map<String, dynamic> json) => CreditsReponse(
         id: json["id"],
         cast: List<Cast>.from(json["cast"].map((x) => Cast.fromJson(x))),
         crew: List<Cast>.from(json["crew"].map((x) => Cast.fromJson(x))),
@@ -77,9 +79,9 @@ class Cast {
         this.job,
     });
 
-    factory Cast.fromJson(String str) => Cast.fromMap(json.decode(str));
+    
 
-    factory Cast.fromMap(Map<String, dynamic> json) => Cast(
+    factory Cast.fromJson(Map<String, dynamic> json) => Cast(
         adult: json["adult"],
         gender: json["gender"],
         id: json["id"],
