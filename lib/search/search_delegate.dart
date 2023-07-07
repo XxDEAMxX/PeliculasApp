@@ -56,6 +56,7 @@ class MovieSeacarhDelegate extends SearchDelegate{
     }
 
     final movieProvider = Provider.of<MovieProvaider>(context, listen: false);
+    movieProvider.getSuggestionsByQuery(query);
 
     return StreamBuilder(
       stream: movieProvider.suggestionStream,
